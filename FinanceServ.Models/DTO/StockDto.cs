@@ -31,5 +31,23 @@ namespace FinanceServ.Models.DTO
         /// </summary>
         [Required]
         public int Foundation { get; set; }
+
+        /// <summary>
+        /// Сектор экономики
+        /// </summary>
+        [Required]
+        public string Sector { get; set; }
+
+        /// <summary>
+        /// Область индустрии
+        /// </summary>
+        [Required]
+        public string Industry { get; set; }
+
+        /// <summary>
+        /// Страна расположения компании
+        /// </summary>
+        [Required]
+        public string Country { get; set; }
     }
 }
