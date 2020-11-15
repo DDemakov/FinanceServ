@@ -33,5 +33,20 @@ namespace FinanceServ.DAL.Entities
         /// Год основания компании
         /// </summary>
         public int Foundation { get; set; }
+
+        /// <summary>
+        /// Сектор экономики
+        /// </summary>
+        public string Sector { get; set; }
+
+        /// <summary>
+        /// Область индустрии
+        /// </summary>
+        public string Industry { get; set; }
+
+        /// <summary>
+        /// Страна расположения компании
+        /// </summary>
+        public string Country { get; set; }
     }
 }
