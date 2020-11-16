@@ -14,7 +14,7 @@ namespace FinanceServ.DAL.Mocks
         /// Получение коллекции сущностей "Акции".
         /// </summary>
         /// <returns>Коллекция сущностей "Акции"</returns>
-        public static IEnumerable<Stock> GetStocks()
+        public static IEnumerable<Stock> GetStockCollection()
         {
             return new List<Stock>
             {

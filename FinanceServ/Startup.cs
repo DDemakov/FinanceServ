@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,7 +11,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using FinanceServ.Common;
+using FinanceServ.Common.Swagger;
+using AutoMapper;
+using FinanceServ.Services.Bootstrapping;
+using FinanceServ.Services.Services;
 
 namespace FinanceServ
 {
@@ -40,6 +44,8 @@ namespace FinanceServ
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.ConfigureServices();
+            services.AddAutoMapper(typeof(StockService).GetTypeInfo().Assembly);
             services.ConfigureSwagger();
         }
 
