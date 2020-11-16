@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace FinanceServ.Common
+namespace FinanceServ.Common.Swagger
 {
     /// <summary>
     /// Расширения для конфигурации Swagger
