@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceServ", "FinanceServ\FinanceServ.csproj", "{C58C5C33-E3E8-4938-A079-D24D2D19DC6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceServ.DAL", "FinanceServ.DAL\FinanceServ.DAL.csproj", "{CAE41C34-B845-4598-9AC6-DCEC7C36E7FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceServ.DAL", "FinanceServ.DAL\FinanceServ.DAL.csproj", "{CAE41C34-B845-4598-9AC6-DCEC7C36E7FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceServ.Models", "FinanceServ.Models\FinanceServ.Models.csproj", "{AA7EECAC-D681-4733-86E6-822C2FA73207}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceServ.Models", "FinanceServ.Models\FinanceServ.Models.csproj", "{AA7EECAC-D681-4733-86E6-822C2FA73207}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceServ.Services", "FinanceServ.Services\FinanceServ.Services.csproj", "{815D1284-2FCE-4203-8B6D-F52E78F4ADA1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceServ.Services", "FinanceServ.Services\FinanceServ.Services.csproj", "{815D1284-2FCE-4203-8B6D-F52E78F4ADA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
