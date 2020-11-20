@@ -1,51 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FinanceServ.DAL.Entities
+﻿namespace FinanceServ.DAL.Entities
 {
     /// <summary>
-    /// Акция на фондовом рынке
+    /// Акция на фондовом рынке.
     /// </summary>
     public class Stock
     {
         /// <summary>
-        /// Идентификатор записи
+        /// Идентификатор записи.
         /// </summary>
         public int Id { get; set; }
         
         /// <summary>
-        /// Имя компании
+        /// Имя компании.
         /// </summary>
         public string Name { get; set; }
         
         /// <summary>
-        /// Тикер компании на бирже (фондовом рынке)
+        /// Тикер компании на бирже (фондовом рынке).
         /// </summary>
         public string Ticker { get; set; }
        
         /// <summary>
-        /// Краткое описание компании
+        /// Краткое описание компании.
         /// </summary>
         public string Description { get; set; }
         
         /// <summary>
-        /// Год основания компании
+        /// Год основания компании.
         /// </summary>
         public int Foundation { get; set; }
 
         /// <summary>
-        /// Сектор экономики
+        /// Сектор экономики.
         /// </summary>
         public string Sector { get; set; }
 
         /// <summary>
-        /// Область индустрии
+        /// Область индустрии.
         /// </summary>
         public string Industry { get; set; }
 
         /// <summary>
-        /// Страна расположения компании
+        /// Страна расположения компании.
         /// </summary>
         public string Country { get; set; }
     }

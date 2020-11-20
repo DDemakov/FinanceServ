@@ -19,12 +19,12 @@ using FinanceServ.Services.Services;
 namespace FinanceServ
 {
     /// <summary>
-    /// Конфигурация приложения
+    /// Конфигурация приложения.
     /// </summary>
     public class Startup
     {
         /// <summary>
-        /// Инициализирует новый экземпляр класса <see cref="Startup"/>
+        /// Инициализирует новый экземпляр класса <see cref="Startup"/>.
         /// </summary>
         /// <param name="configuration">Конфигурация.</param>
         public Startup(IConfiguration configuration)
@@ -73,9 +73,7 @@ namespace FinanceServ
             });
 
             app.UseCors();
-
             app.UseOpenApi();
-
             app.UseSwaggerUi3();
         }
     }

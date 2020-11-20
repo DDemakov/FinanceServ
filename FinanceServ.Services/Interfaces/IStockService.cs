@@ -6,7 +6,7 @@ using FinanceServ.Models.DTO;
 namespace FinanceServ.Services.Interfaces
 {
     /// <summary>
-    /// Интерфейс сервиса для работы с данными по акциям
+    /// Интерфейс сервиса для работы с данными по акциям.
     /// </summary>
     public interface IStockService
     {

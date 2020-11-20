@@ -23,12 +23,15 @@ namespace FinanceServ.Controllers
         private readonly ILogger<StockController> _logger;
 
         /// <summary>
-        /// Инициализирует экземпляр <see cref="StockController"/>
+        /// Инициализирует экземпляр <see cref="StockController"/>.
         /// </summary>
-        /// <param name="stockService"></param>
-        /// <param name="logger"></param>
-        public StockController(IStockService stockService, ILogger<StockController> logger) =>
-            (_stockService, _logger) = (stockService, logger);
+        /// <param name="stockService">Сервис работы с акциями.</param>
+        /// <param name="logger">Логгер.</param>
+        public StockController(IStockService stockService, ILogger<StockController> logger)
+        {
+            _stockService = stockService;
+            _logger = logger;
+        }
 
         /// <summary>
         /// Получение списка доступных акций.
@@ -42,6 +45,5 @@ namespace FinanceServ.Controllers
             var response = _stockService.GetStocks();
             return Ok(response);
         }
-
     }
 }
