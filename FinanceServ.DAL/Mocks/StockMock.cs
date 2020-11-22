@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using FinanceServ.DAL.Entities;
 
 namespace FinanceServ.DAL.Mocks
@@ -13,7 +11,7 @@ namespace FinanceServ.DAL.Mocks
         /// <summary>
         /// Получение коллекции сущностей "Акции".
         /// </summary>
-        /// <returns>Коллекция сущностей "Акции"</returns>
+        /// <returns>Коллекция сущностей "Акции".</returns>
         public static IEnumerable<Stock> GetStockCollection()
         {
             return new List<Stock>

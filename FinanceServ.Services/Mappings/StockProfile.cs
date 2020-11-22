@@ -10,7 +10,7 @@ namespace FinanceServ.Services.Mappings
     public class StockProfile : Profile
     {
         /// <summary>
-        /// Инициализрует экзземпляр <see cref="StockProfile"/>
+        /// Инициализрует экземпляр <see cref="StockProfile"/>.
         /// </summary>
         public StockProfile()
         {

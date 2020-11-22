@@ -9,17 +9,21 @@ using FinanceServ.Services.Interfaces;
 namespace FinanceServ.Services.Services
 {
     /// <summary>
-    /// Сервис для работы с данными по акциям
+    /// Сервис для работы с данными по акциям.
     /// </summary>
     public class StockService : IStockService
     {
         private readonly IMapper _mapper;
 
-        public StockService(IMapper mapper) => (_mapper) = (mapper);
-
         /// <summary>
-        /// Метод для получения всего списка акций.
+        /// Инициализирует экземпляр <see cref="StockService"/> 
         /// </summary>
+        /// <param name="mapper">Маппер.</param>
+        public StockService(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
+
         /// <inheritdoc cref="IStockService"/>
         public IEnumerable<StockDto> GetStocks()
         {
