@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FinanceServ.DAL\FinanceServ.DAL.csproj" />
+  </ItemGroup>
+
 </Project>

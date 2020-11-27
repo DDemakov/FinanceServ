@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using FinanceServ.DAL.Entities;
+using System.Collections.Generic;
 
 namespace FinanceServ.Models.DTO
 {
     /// <summary>
-    /// Акция на фондовом рынке.
+    /// Акция на фондовом рынке; DTO для <see cref="Stock"/>.
     /// </summary>
     public class StockDto
     {
@@ -49,5 +51,10 @@ namespace FinanceServ.Models.DTO
         /// </summary>
         [Required]
         public string Country { get; set; }
+
+        /// <summary>
+        /// Связанные транзакции.
+        /// </summary>
+        public ICollection<TransactionDto> Transactions { get; set; }
     }
 }
