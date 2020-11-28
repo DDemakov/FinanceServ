@@ -8,15 +8,8 @@ namespace FinanceServ.DAL.Entities
     /// <summary>
     /// Акция на фондовом рынке.
     /// </summary>
-    public class Stock
+    public class Stock : BaseEntity
     {
-        /// <summary>
-        /// Идентификатор записи.
-        /// </summary>
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
-
         /// <summary>
         /// Имя компании.
         /// </summary>

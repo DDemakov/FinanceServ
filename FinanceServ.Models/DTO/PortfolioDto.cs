@@ -9,7 +9,7 @@ namespace FinanceServ.Models.DTO
     /// <summary>
     /// Финансовый портфель пользователя; DTO для <see cref="Portfolio"/>
     /// </summary>
-    public class PortfolioDto
+    public class PortfolioDto : BaseDto
     {
         /// <summary>
         /// Название финансового портфеля.
@@ -26,7 +26,7 @@ namespace FinanceServ.Models.DTO
         /// Идентификатор пользователя, создавшего портфель.
         /// </summary>
         [Required]
-        public int UserId { get; set; }
+        public long UserId { get; set; }
 
         /// <summary>
         /// Связанные транзакции.

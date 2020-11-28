@@ -9,7 +9,7 @@ namespace FinanceServ.Models.DTO
     /// <summary>
     /// Валюта расчётов; DTO для <see cref="Currency"/>.
     /// </summary>
-    public class CurrencyDto
+    public class CurrencyDto : BaseDto
     {
         /// <summary>
         /// Название валюты.
