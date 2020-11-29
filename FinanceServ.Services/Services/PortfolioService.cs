@@ -9,41 +9,41 @@ using FinanceServ.Services.Interfaces.CRUD;
 namespace FinanceServ.Services.Services
 {
     /// <summary>
-    /// Сервис для работы с данными по акциям.
+    /// Сервис для работы с данными по финансовым портфелям.
     /// </summary>
-    public class StockService : IStockService 
+    public class PortfolioService : IPortfolioService
     {
-        private readonly IStockRepository _repository;
+        private readonly IPortfolioRepository _repository;
 
         /// <summary>
-        /// Инициализирует экземпляр <see cref="StockService"/>
+        /// Инициализирует экземпляр <see cref="PortfolioService"/>
         /// </summary>
         /// <param name="repository">Репозиторий.</param>
-        public StockService(IStockRepository repository)
+        public PortfolioService(IPortfolioRepository repository)
         {
             _repository = repository;
         }
 
         /// <inheritdoc cref="ICreatable{TDto}.CreateAsync(TDto)"/>
-        public async Task<StockDto> CreateAsync(StockDto dto)
+        public async Task<PortfolioDto> CreateAsync(PortfolioDto dto)
         {
             return await _repository.CreateAsync(dto);
         }
 
         /// <inheritdoc cref="IGettable{TDto}.GetAsync(CancellationToken)"/>
-        public async Task<IEnumerable<StockDto>> GetAsync(CancellationToken token = default)
+        public async Task<IEnumerable<PortfolioDto>> GetAsync(CancellationToken token = default)
         {
             return await _repository.GetAsync();
         }
 
         /// <inheritdoc cref="IGettableById{TDto}.GetAsync(long, CancellationToken)"/>
-        public async Task<StockDto> GetAsync(long id, CancellationToken token = default)
+        public async Task<PortfolioDto> GetAsync(long id, CancellationToken token = default)
         {
             return await _repository.GetAsync(id);
         }
 
         /// <inheritdoc cref="IUpdatable{TDto}.UpdateAsync(TDto)"/>
-        public async Task<StockDto> UpdateAsync(StockDto dto)
+        public async Task<PortfolioDto> UpdateAsync(PortfolioDto dto)
         {
             return await _repository.UpdateAsync(dto);
         }

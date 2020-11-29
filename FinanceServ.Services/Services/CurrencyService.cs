@@ -9,41 +9,41 @@ using FinanceServ.Services.Interfaces.CRUD;
 namespace FinanceServ.Services.Services
 {
     /// <summary>
-    /// Сервис для работы с данными по акциям.
+    /// Сервис для работы с данными по валютам.
     /// </summary>
-    public class StockService : IStockService 
+    public class CurrencyService : ICurrencyService
     {
-        private readonly IStockRepository _repository;
+        private readonly ICurrencyRepository _repository;
 
         /// <summary>
-        /// Инициализирует экземпляр <see cref="StockService"/>
+        /// Инициализирует экземпляр <see cref="CurrencyService"/>
         /// </summary>
         /// <param name="repository">Репозиторий.</param>
-        public StockService(IStockRepository repository)
+        public CurrencyService(ICurrencyRepository repository)
         {
             _repository = repository;
         }
 
         /// <inheritdoc cref="ICreatable{TDto}.CreateAsync(TDto)"/>
-        public async Task<StockDto> CreateAsync(StockDto dto)
+        public async Task<CurrencyDto> CreateAsync(CurrencyDto dto)
         {
             return await _repository.CreateAsync(dto);
         }
 
         /// <inheritdoc cref="IGettable{TDto}.GetAsync(CancellationToken)"/>
-        public async Task<IEnumerable<StockDto>> GetAsync(CancellationToken token = default)
+        public async Task<IEnumerable<CurrencyDto>> GetAsync(CancellationToken token = default)
         {
             return await _repository.GetAsync();
         }
 
         /// <inheritdoc cref="IGettableById{TDto}.GetAsync(long, CancellationToken)"/>
-        public async Task<StockDto> GetAsync(long id, CancellationToken token = default)
+        public async Task<CurrencyDto> GetAsync(long id, CancellationToken token = default)
         {
             return await _repository.GetAsync(id);
         }
 
         /// <inheritdoc cref="IUpdatable{TDto}.UpdateAsync(TDto)"/>
-        public async Task<StockDto> UpdateAsync(StockDto dto)
+        public async Task<CurrencyDto> UpdateAsync(CurrencyDto dto)
         {
             return await _repository.UpdateAsync(dto);
         }

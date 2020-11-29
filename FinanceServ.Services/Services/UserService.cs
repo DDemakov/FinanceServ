@@ -11,39 +11,39 @@ namespace FinanceServ.Services.Services
     /// <summary>
     /// Сервис для работы с данными по акциям.
     /// </summary>
-    public class StockService : IStockService 
+    public class UserService : IUserService
     {
-        private readonly IStockRepository _repository;
+        private readonly IUserRepository _repository;
 
         /// <summary>
-        /// Инициализирует экземпляр <see cref="StockService"/>
+        /// Инициализирует экземпляр <see cref="UserService"/>
         /// </summary>
         /// <param name="repository">Репозиторий.</param>
-        public StockService(IStockRepository repository)
+        public UserService(IUserRepository repository)
         {
             _repository = repository;
         }
 
         /// <inheritdoc cref="ICreatable{TDto}.CreateAsync(TDto)"/>
-        public async Task<StockDto> CreateAsync(StockDto dto)
+        public async Task<UserDto> CreateAsync(UserDto dto)
         {
             return await _repository.CreateAsync(dto);
         }
 
         /// <inheritdoc cref="IGettable{TDto}.GetAsync(CancellationToken)"/>
-        public async Task<IEnumerable<StockDto>> GetAsync(CancellationToken token = default)
+        public async Task<IEnumerable<UserDto>> GetAsync(CancellationToken token = default)
         {
             return await _repository.GetAsync();
         }
 
         /// <inheritdoc cref="IGettableById{TDto}.GetAsync(long, CancellationToken)"/>
-        public async Task<StockDto> GetAsync(long id, CancellationToken token = default)
+        public async Task<UserDto> GetAsync(long id, CancellationToken token = default)
         {
             return await _repository.GetAsync(id);
         }
 
         /// <inheritdoc cref="IUpdatable{TDto}.UpdateAsync(TDto)"/>
-        public async Task<StockDto> UpdateAsync(StockDto dto)
+        public async Task<UserDto> UpdateAsync(UserDto dto)
         {
             return await _repository.UpdateAsync(dto);
         }

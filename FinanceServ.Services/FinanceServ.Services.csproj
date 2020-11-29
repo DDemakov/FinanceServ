@@ -12,6 +12,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FinanceServ.DAL\FinanceServ.DAL.csproj" />
     <ProjectReference Include="..\FinanceServ.Models\FinanceServ.Models.csproj" />
+    <ProjectReference Include="..\FinanceServ.Repositories\FinanceServ.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 
-namespace FinanceServ.Repositories.Interfaces.CRUD
+namespace FinanceServ.Services.Interfaces.CRUD
 {
     /// <summary>
-    /// Интерфейс для удаления сущностей.
+    /// Интерфейс сервиса для удаления сущностей.
     /// </summary>
     public interface IDeletable
     {
