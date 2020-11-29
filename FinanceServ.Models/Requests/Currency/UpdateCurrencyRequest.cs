@@ -5,7 +5,7 @@ namespace FinanceServ.Models.Requests.Currency
     /// <summary>
     /// Запрос на изменение валюты.
     /// </summary>
-    public class UpdateCurrencyRequest
+    public class UpdateCurrencyRequest : CreateCurrencyRequest
     {
         /// <summary>
         /// Идентификатор записи.

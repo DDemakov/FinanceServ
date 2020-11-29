@@ -17,7 +17,7 @@ namespace FinanceServ.Controllers.Mappings
         {
             CreateMap<CreateCurrencyRequest, CurrencyDto>();
             CreateMap<UpdateCurrencyRequest, CurrencyDto>();
-            CreateMap<StockDto, CurrencyResponse>();
+            CreateMap<CurrencyDto, CurrencyResponse>();
         }
     }
 }

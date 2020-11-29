@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using FinanceServ.DAL.Entities;
+using FinanceServ.DAL.Contexts.EntitiesConfiguration;
 
 namespace FinanceServ.DAL.Contexts
 {
@@ -42,8 +43,17 @@ namespace FinanceServ.DAL.Contexts
         /// <param name="options">Опции.</param>
         public FinanceServContext(DbContextOptions<FinanceServContext> options) : base(options)
         {
-            Database.EnsureDeleted();
             Database.EnsureCreated();
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.ApplyConfiguration(new CurrencyConfiguration());
+            builder.ApplyConfiguration(new PortfolioConfiguration());
+            builder.ApplyConfiguration(new StockConfiguration());
+            builder.ApplyConfiguration(new TransactionConfiguration());
+            builder.ApplyConfiguration(new UserConfiguration());
+        }
+
     }
 }

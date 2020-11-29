@@ -5,7 +5,7 @@ namespace FinanceServ.Models.Requests.Transaction
     /// <summary>
     /// Запрос на изменение транзакции.
     /// </summary>
-    public class UpdateTransactionRequest
+    public class UpdateTransactionRequest : CreateTransactionRequest
     {
         /// <summary>
         /// Идентификатор записи.

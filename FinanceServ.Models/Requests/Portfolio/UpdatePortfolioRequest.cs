@@ -5,7 +5,7 @@ namespace FinanceServ.Models.Requests.Portfolio
     /// <summary>
     /// Запрос на изменение финансового портфеля.
     /// </summary>
-    public class UpdatePortfolioRequest
+    public class UpdatePortfolioRequest : CreatePortfolioRequest
     {
         /// <summary>
         /// Идентификатор записи.
