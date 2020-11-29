@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.ComponentModel.DataAnnotations;
-using FinanceServ.DAL.Entities;
 
-namespace FinanceServ.Models.DTO
+namespace FinanceServ.Models.Responses.Portfolio
 {
     /// <summary>
-    /// Финансовый портфель пользователя; DTO для <see cref="Portfolio"/>
+    /// Ответ для связанных запросов по пользовательским финансовым портфелям.
     /// </summary>
-    public class PortfolioDto : BaseDto
+    public class PortfolioSideResponse
     {
+        /// <summary>
+        /// Идентификатор записи.
+        /// </summary>
+        public long Id { get; set; }
+
         /// <summary>
         /// Название финансового портфеля.
         /// </summary>
@@ -25,10 +28,5 @@ namespace FinanceServ.Models.DTO
         /// Идентификатор пользователя, создавшего портфель.
         /// </summary>
         public long UserId { get; set; }
-
-        /// <summary>
-        /// Связанные транзакции.
-        /// </summary>
-        public ICollection<TransactionDto> Transactions { get; set; }
     }
 }
