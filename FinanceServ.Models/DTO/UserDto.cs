@@ -9,7 +9,7 @@ namespace FinanceServ.Models.DTO
     /// <summary>
     /// Пользователь приложения; DTO для <see cref="User"/>
     /// </summary>
-    public class UserDto
+    public class UserDto : BaseDto
     {
         /// <summary>
         /// Электронная почта пользователя.

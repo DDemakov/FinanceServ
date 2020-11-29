@@ -9,15 +9,8 @@ namespace FinanceServ.DAL.Entities
     /// <summary>
     /// Финансовый портфель пользователя.
     /// </summary>
-    public class Portfolio
+    public class Portfolio : BaseEntity
     {
-        /// <summary>
-        /// Идентификатор записи.
-        /// </summary>
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
-
         /// <summary>
         /// Название финансового портфеля.
         /// </summary>
@@ -33,7 +26,7 @@ namespace FinanceServ.DAL.Entities
         /// <summary>
         /// Идентификатор пользователя, создавшего портфель.
         /// </summary>
-        public int UserId { get; set; }
+        public long UserId { get; set; }
 
         /// <summary>
         /// Пользователь.

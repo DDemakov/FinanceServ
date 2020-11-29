@@ -8,7 +8,7 @@ namespace FinanceServ.Models.DTO
     /// <summary>
     /// Акция на фондовом рынке; DTO для <see cref="Stock"/>.
     /// </summary>
-    public class StockDto
+    public class StockDto : BaseDto
     {
         /// <summary>
         /// Имя компании.

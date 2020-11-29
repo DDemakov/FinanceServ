@@ -9,15 +9,8 @@ namespace FinanceServ.DAL.Entities
     /// <summary>
     /// Валюта расчётов.
     /// </summary>
-    public class Currency
+    public class Currency : BaseEntity
     {
-        /// <summary>
-        /// Идентификатор записи.
-        /// </summary>
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
-
         /// <summary>
         /// Название валюты.
         /// </summary>

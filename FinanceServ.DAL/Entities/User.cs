@@ -9,15 +9,8 @@ namespace FinanceServ.DAL.Entities
     /// <summary>
     /// Пользователь приложения.
     /// </summary>
-    public class User
+    public class User : BaseEntity
     {
-        /// <summary>
-        /// Идентификатор записи.
-        /// </summary>
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
-
         /// <summary>
         /// Электронная почта пользователя.
         /// </summary>

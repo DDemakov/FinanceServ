@@ -10,15 +10,8 @@ namespace FinanceServ.DAL.Entities
     /// <summary>
     /// Финансовая транзакция по покупке/продаже акций.
     /// </summary>
-    public class Transaction
+    public class Transaction : BaseEntity
     {
-        /// <summary>
-        /// Идентификатор записи.
-        /// </summary>
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public long Id { get; set; }
-
         /// <summary>
         /// Тип операции с акциями.
         /// </summary>
@@ -51,25 +44,25 @@ namespace FinanceServ.DAL.Entities
         /// Идентификатор записи акции, участвовавшей в транзакции.
         /// </summary>
         [Required]
-        public int StockId { get; set; }
+        public long StockId { get; set; }
 
         /// <summary>
         /// Внешний ключ-указатель на идентификатор пользователя.
         /// </summary>
         [Required]
-        public int UserId { get; set; }
+        public long UserId { get; set; }
 
         /// <summary>
         /// Внешний ключ-указатель на идентификатор финансового портфеля.
         /// </summary>
         [Required]
-        public int PortfolioId { get; set; }
+        public long PortfolioId { get; set; }
 
         /// <summary>
         /// Внешний ключ-указатель на идентификатор валюты.
         /// </summary>
         [Required]
-        public int CurrencyId { get; set; }
+        public long CurrencyId { get; set; }
 
         /// <summary>
         /// Акция.
