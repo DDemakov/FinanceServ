@@ -13,7 +13,7 @@ namespace FinanceServ.DAL.Bootstrapping
         public static void ConfigureDb(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<FinanceServContext>(
-                options => options.UseSqlServer(
+                options => options.UseNpgsql(
                     configuration.GetConnectionString(nameof(FinanceServContext)),
                     builder => builder.MigrationsAssembly(typeof(FinanceServContext).Assembly.FullName))
                 );
