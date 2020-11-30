@@ -1,42 +1,35 @@
 ﻿using System;
-using FinanceServ.DAL.Entities;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-namespace FinanceServ.Models.DTO
+namespace FinanceServ.Models.Requests.User
 {
     /// <summary>
-    /// Пользователь приложения; DTO для <see cref="User"/>
+    /// Запрос на добавление нового пользователя в систему.
     /// </summary>
-    public class UserDto : BaseDto
+    public class CreateUserRequest
     {
         /// <summary>
         /// Электронная почта пользователя.
         /// </summary>
+        [Required]
         public string Email { get; set; }
 
         /// <summary>
         /// Пароль доступа к аккаунту.
         /// </summary>
+        [Required]
         public string Password { get; set; }
 
         /// <summary>
         /// Дата добавления учётной записи в систему.
         /// </summary>
+        [Required]
         public DateTime Added { get; set; }
 
         /// <summary>
         /// Дата последнего изменения учётной записи.
         /// </summary>
+        [Required]
         public DateTime Changed { get; set; }
-
-        /// <summary>
-        /// Связанные финансовые портфели.
-        /// </summary>
-        public ICollection<PortfolioDto> Portfolios { get; set; }
-
-        /// <summary>
-        /// Связанные транзакции.
-        /// </summary>
-        public ICollection<TransactionDto> Transactions { get; set; }
     }
 }

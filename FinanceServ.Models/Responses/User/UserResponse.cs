@@ -1,14 +1,20 @@
 ﻿using System;
-using FinanceServ.DAL.Entities;
 using System.Collections.Generic;
+using FinanceServ.Models.Responses.Portfolio;
+using FinanceServ.Models.Responses.Transaction;
 
-namespace FinanceServ.Models.DTO
+namespace FinanceServ.Models.Responses.User
 {
     /// <summary>
-    /// Пользователь приложения; DTO для <see cref="User"/>
+    /// Ответ на запросы по пользователям системы.
     /// </summary>
-    public class UserDto : BaseDto
+    public class UserResponse
     {
+        /// <summary>
+        /// Идентификатор записи.
+        /// </summary>
+        public long Id { get; set; }
+
         /// <summary>
         /// Электронная почта пользователя.
         /// </summary>
@@ -32,11 +38,11 @@ namespace FinanceServ.Models.DTO
         /// <summary>
         /// Связанные финансовые портфели.
         /// </summary>
-        public ICollection<PortfolioDto> Portfolios { get; set; }
+        public ICollection<PortfolioSideResponse> Portfolios { get; set; }
 
         /// <summary>
         /// Связанные транзакции.
         /// </summary>
-        public ICollection<TransactionDto> Transactions { get; set; }
+        public ICollection<TransactionSideResponse> Transactions { get; set; }
     }
 }

@@ -1,14 +1,18 @@
 ﻿using System;
-using FinanceServ.DAL.Entities;
 using FinanceServ.DAL.Enums;
 
-namespace FinanceServ.Models.DTO
+namespace FinanceServ.Models.Responses.Transaction
 {
     /// <summary>
-    /// Финансовая транзакция по покупке/продаже акций; DTO для <see cref="Transaction"/>
+    /// Ответ для связанных запросов по совершенным пользовательским транзакциям.
     /// </summary>
-    public class TransactionDto : BaseDto
+    public class TransactionSideResponse
     {
+        /// <summary>
+        /// Идентификатор записи.
+        /// </summary>
+        public long Id { get; set; }
+
         /// <summary>
         /// Тип операции с акциями.
         /// </summary>

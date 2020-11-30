@@ -1,38 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FinanceServ.DAL.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace FinanceServ.Models.DTO
+namespace FinanceServ.Models.Requests.Currency
 {
     /// <summary>
-    /// Валюта расчётов; DTO для <see cref="Currency"/>.
+    /// Запрос на создание валюты.
     /// </summary>
-    public class CurrencyDto : BaseDto
+    public class CreateCurrencyRequest
     {
         /// <summary>
         /// Название валюты.
         /// </summary>
+        [Required]
         public string Name { get; set; }
 
         /// <summary>
         /// Буквенный код валюты.
         /// </summary>
+        [MinLength(3)]
+        [MaxLength(3)]
         public string AlphabeticCode { get; set; }
 
         /// <summary>
         /// Цифровой код валюты.
         /// </summary>
+        [MinLength(3)]
+        [MaxLength(3)]
         public string NumericCode { get; set; }
 
         /// <summary>
         /// Возможность использования.
         /// </summary>
+        [Required]
         public bool IsEnabled { get; set; }
-
-        /// <summary>
-        /// Связанные транзакции.
-        /// </summary>
-        public ICollection<TransactionDto> Transactions { get; set; }
     }
 }

@@ -1,13 +1,19 @@
-﻿using FinanceServ.DAL.Entities;
+﻿using System;
 using System.Collections.Generic;
+using FinanceServ.Models.Responses.Transaction;
 
-namespace FinanceServ.Models.DTO
+namespace FinanceServ.Models.Responses.Stock
 {
     /// <summary>
-    /// Акция на фондовом рынке; DTO для <see cref="Stock"/>.
+    /// Ответ на запросы по видам акций.
     /// </summary>
-    public class StockDto : BaseDto
+    public class StockResponse
     {
+        /// <summary>
+        /// Идентификатор записи.
+        /// </summary>
+        public long Id { get; set; }
+
         /// <summary>
         /// Имя компании.
         /// </summary>
@@ -46,6 +52,6 @@ namespace FinanceServ.Models.DTO
         /// <summary>
         /// Связанные транзакции.
         /// </summary>
-        public ICollection<TransactionDto> Transactions { get; set; }
+        public ICollection<TransactionSideResponse> Transactions { get; set; }
     }
 }

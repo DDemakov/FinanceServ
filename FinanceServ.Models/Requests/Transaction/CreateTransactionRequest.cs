@@ -1,17 +1,18 @@
 ﻿using System;
-using FinanceServ.DAL.Entities;
+using System.ComponentModel.DataAnnotations;
 using FinanceServ.DAL.Enums;
 
-namespace FinanceServ.Models.DTO
+namespace FinanceServ.Models.Requests.Transaction
 {
     /// <summary>
-    /// Финансовая транзакция по покупке/продаже акций; DTO для <see cref="Transaction"/>
+    /// Запрос на создание транзакции.
     /// </summary>
-    public class TransactionDto : BaseDto
+    public class CreateTransactionRequest
     {
         /// <summary>
         /// Тип операции с акциями.
         /// </summary>
+        [Required]
         public OperationType Type { get; set; }
 
         /// <summary>
@@ -22,6 +23,7 @@ namespace FinanceServ.Models.DTO
         /// <summary>
         /// Дата добавления транзакции в базу данных.
         /// </summary>
+        [Required]
         public DateTime Added { get; set; }
 
         /// <summary>
@@ -29,6 +31,7 @@ namespace FinanceServ.Models.DTO
         /// </summary>
         public decimal? Price { get; set; }
 
+        [Required]
         /// <summary>
         /// Количество акций в транзакции.
         /// </summary>
@@ -37,21 +40,28 @@ namespace FinanceServ.Models.DTO
         /// <summary>
         /// Идентификатор записи акции, участвовавшей в транзакции.
         /// </summary>
+        [Required]
         public long StockId { get; set; }
 
         /// <summary>
         /// Внешний ключ-указатель на идентификатор пользователя.
         /// </summary>
+        [Required]
         public long UserId { get; set; }
 
         /// <summary>
         /// Внешний ключ-указатель на идентификатор финансового портфеля.
         /// </summary>
+        [Required]
         public long PortfolioId { get; set; }
 
         /// <summary>
         /// Внешний ключ-указатель на идентификатор валюты.
         /// </summary>
-        public long CurrencyId { get; set; }
+        [Required]
+        public long CurrencyId
+        {
+            get; set;
+        }
     }
 }

@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FinanceServ.DAL.Entities;
+﻿using System.Collections.Generic;
+using FinanceServ.Models.Responses.Transaction;
 
-namespace FinanceServ.Models.DTO
+namespace FinanceServ.Models.Responses.Currency
 {
     /// <summary>
-    /// Валюта расчётов; DTO для <see cref="Currency"/>.
+    /// Ответ на запросы по видам валют.
     /// </summary>
-    public class CurrencyDto : BaseDto
+    public class CurrencyResponse
     {
+        /// <summary>
+        /// Идентификатор записи.
+        /// </summary>
+        public long Id { get; set; }
+
         /// <summary>
         /// Название валюты.
         /// </summary>
@@ -33,6 +36,6 @@ namespace FinanceServ.Models.DTO
         /// <summary>
         /// Связанные транзакции.
         /// </summary>
-        public ICollection<TransactionDto> Transactions { get; set; }
+        public ICollection<TransactionSideResponse> Transactions { get; set; }
     }
 }
