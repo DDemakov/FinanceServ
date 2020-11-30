@@ -29,6 +29,11 @@ namespace FinanceServ.DAL.Contexts.EntitiesConfiguration
                    .WithMany(s => s.Transactions)
                    .HasForeignKey(t => t.StockId)
                    .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(c => c.Currency)
+                   .WithMany(s => s.Transactions)
+                   .HasForeignKey(t => t.CurrencyId)
+                   .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
