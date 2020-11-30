@@ -17,5 +17,9 @@
     <ProjectReference Include="..\FinanceServ.Services\FinanceServ.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Static\" />
+  </ItemGroup>
+
 
 </Project>
