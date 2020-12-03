@@ -16,15 +16,13 @@ namespace FinanceServ.Models.Requests.Currency
         /// <summary>
         /// Буквенный код валюты.
         /// </summary>
-        [MinLength(3)]
-        [MaxLength(3)]
+        [StringLength(3, MinimumLength = 3)]
         public string AlphabeticCode { get; set; }
 
         /// <summary>
         /// Цифровой код валюты.
         /// </summary>
-        [MinLength(3)]
-        [MaxLength(3)]
+        [StringLength(3, MinimumLength = 3)]
         public string NumericCode { get; set; }
 
         /// <summary>

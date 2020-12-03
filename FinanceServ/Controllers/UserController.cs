@@ -15,9 +15,6 @@ using FinanceServ.Models.Responses.User;
 
 namespace FinanceServ.Controllers
 {
-    /*    public class UserController
-        {
-        }*/
     /// <summary>
     /// Контроллер для работы с данными о пользователях.
     /// </summary>

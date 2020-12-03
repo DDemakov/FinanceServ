@@ -20,13 +20,13 @@ namespace FinanceServ.DAL.Entities
         /// <summary>
         /// Буквенный код валюты.
         /// </summary>
-        [StringLength(3, MinimumLength = 3)]
+        [StringLength(3)]
         public string AlphabeticCode { get; set; }
 
         /// <summary>
         /// Цифровой код валюты.
         /// </summary>
-        [StringLength(3, MinimumLength = 3)]
+        [StringLength(3)]
         public string NumericCode { get; set; }
 
         /// <summary>

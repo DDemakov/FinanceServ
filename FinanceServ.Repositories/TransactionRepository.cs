@@ -18,7 +18,6 @@ namespace FinanceServ.Repositories
         /// <param name="mapper">Маппер.</param>
         public TransactionRepository(FinanceServContext context, IMapper mapper) : base(context, mapper)
         {
-
         }
     }
 }

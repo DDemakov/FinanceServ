@@ -20,7 +20,6 @@ namespace FinanceServ.Repositories
         /// <param name="mapper">Маппер.</param>
         public PortfolioRepository(FinanceServContext context, IMapper mapper) : base(context, mapper)
         {
-
         }
 
         protected override IQueryable<Portfolio> DefaultIncludeProperties(DbSet<Portfolio> dbSet)

@@ -53,15 +53,7 @@ namespace FinanceServ
             services.ConfigureServices();
             services.AddAutoMapper(
                 typeof(CurrencyRepository).GetTypeInfo().Assembly,
-                typeof(PortfolioRepository).GetTypeInfo().Assembly,
-                typeof(StockRepository).GetTypeInfo().Assembly,
-                typeof(TransactionRepository).GetTypeInfo().Assembly,
-                typeof(UserRepository).GetTypeInfo().Assembly,
-                typeof(CurrencyController).GetTypeInfo().Assembly,
-                typeof(PortfolioController).GetTypeInfo().Assembly,
-                typeof(StockController).GetTypeInfo().Assembly,
-                typeof(TransactionController).GetTypeInfo().Assembly,
-                typeof(UserController).GetTypeInfo().Assembly);
+                typeof(CurrencyController).GetTypeInfo().Assembly);
             services.ConfigureSwagger();
         }
 

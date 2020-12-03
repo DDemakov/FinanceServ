@@ -9,6 +9,5 @@ namespace FinanceServ.Repositories.Interfaces
     /// </summary>
     public interface ICurrencyRepository : ICrudRepository<CurrencyDto, Currency>
     {
-
     }
 }

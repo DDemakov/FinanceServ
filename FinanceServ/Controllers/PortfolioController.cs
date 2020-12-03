@@ -15,9 +15,6 @@ using FinanceServ.Models.Responses.Portfolio;
 
 namespace FinanceServ.Controllers
 {
-    /*    public class PortfolioController
-        {
-        }*/
     /// <summary>
     /// Контроллер для работы с данными о финансовых портфелях.
     /// </summary>
