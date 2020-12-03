@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FinanceServ.Models.DTO;
+﻿using FinanceServ.Models.DTO;
+using FinanceServ.Services.Interfaces.CRUD;
 
 namespace FinanceServ.Services.Interfaces
 {
     /// <summary>
     /// Интерфейс сервиса для работы с данными по акциям.
     /// </summary>
-    public interface IStockService
+    public interface IStockService : ICrudService<StockDto>
     {
-        IEnumerable<StockDto> GetStocks();
     }
 }

@@ -15,6 +15,10 @@ using FinanceServ.Common.Swagger;
 using AutoMapper;
 using FinanceServ.Services.Bootstrapping;
 using FinanceServ.Services.Services;
+using FinanceServ.Controllers;
+using FinanceServ.Repositories;
+using FinanceServ.Repositories.Bootstrapping;
+using FinanceServ.DAL.Bootstrapping;
 
 namespace FinanceServ
 {
@@ -43,9 +47,13 @@ namespace FinanceServ
         /// <param name="services">Коллекция сервисов.</param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureDb(Configuration);
+            services.ConfigureRepositories();
             services.AddControllers();
             services.ConfigureServices();
-            services.AddAutoMapper(typeof(StockService).GetTypeInfo().Assembly);
+            services.AddAutoMapper(
+                typeof(CurrencyRepository).GetTypeInfo().Assembly,
+                typeof(CurrencyController).GetTypeInfo().Assembly);
             services.ConfigureSwagger();
         }
 

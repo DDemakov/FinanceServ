@@ -2,7 +2,7 @@
 using FinanceServ.DAL.Entities;
 using FinanceServ.Models.DTO;
 
-namespace FinanceServ.Services.Mappings
+namespace FinanceServ.Repositories.Mappings
 {
     /// <summary>
     /// Профиль маппинга (Акции).
@@ -14,7 +14,7 @@ namespace FinanceServ.Services.Mappings
         /// </summary>
         public StockProfile()
         {
-            CreateMap<Stock, StockDto>();
+            CreateMap<Stock, StockDto>().ReverseMap();
         }
     }
 }

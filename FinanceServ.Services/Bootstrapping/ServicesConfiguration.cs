@@ -15,7 +15,11 @@ namespace FinanceServ.Services.Bootstrapping
         /// <param name="services">Коллекция сервисов из Startup.</param>
         public static void ConfigureServices(this IServiceCollection services)
         {
+            services.AddTransient<ICurrencyService, CurrencyService>();
+            services.AddTransient<IPortfolioService, PortfolioService>();
             services.AddTransient<IStockService, StockService>();
+            services.AddTransient<ITransactionService, TransactionService>();
+            services.AddTransient<IUserService, UserService>();
         }
     }
 }
