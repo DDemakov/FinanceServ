@@ -17,11 +17,11 @@ namespace FinanceServ.Repositories.Bootstrapping
         /// <param name="services">Коллекция сервисов из Startup.</param>
         public static void ConfigureRepositories (this IServiceCollection services)
         {
-            services.AddScoped<ICurrencyRepository, CurrencyRepository>();
-            services.AddScoped<IPortfolioRepository, PortfolioRepository>();
-            services.AddScoped<IStockRepository, StockRepository>();
-            services.AddScoped<ITransactionRepository, TransactionRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddTransient<ICurrencyRepository, CurrencyRepository>();
+            services.AddTransient<IPortfolioRepository, PortfolioRepository>();
+            services.AddTransient<IStockRepository, StockRepository>();
+            services.AddTransient<ITransactionRepository, TransactionRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
         }
     }
 }

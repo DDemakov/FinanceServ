@@ -26,6 +26,12 @@ namespace FinanceServ.Models.Requests.Currency
         public string NumericCode { get; set; }
 
         /// <summary>
+        /// Краткое описание валюты.
+        /// </summary>
+        [MaxLength(200)]
+        public string Description { get; set; }
+
+        /// <summary>
         /// Возможность использования.
         /// </summary>
         [Required]
