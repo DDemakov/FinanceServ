@@ -39,10 +39,5 @@ namespace FinanceServ.Models.Responses.User
         /// Связанные финансовые портфели.
         /// </summary>
         public ICollection<PortfolioSideResponse> Portfolios { get; set; }
-
-        /// <summary>
-        /// Связанные транзакции.
-        /// </summary>
-        public ICollection<TransactionSideResponse> Transactions { get; set; }
     }
 }

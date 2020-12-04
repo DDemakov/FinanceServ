@@ -53,5 +53,15 @@ namespace FinanceServ.Models.DTO
         /// Внешний ключ-указатель на идентификатор валюты.
         /// </summary>
         public long CurrencyId { get; set; }
+
+        /// <summary>
+        /// Валюта.
+        /// </summary>
+        public CurrencyDto Currency { get; set; }
+
+        /// <summary>
+        /// Акция.
+        /// </summary>
+        public StockDto Stock { get; set; }
     }
 }

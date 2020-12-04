@@ -57,5 +57,15 @@ namespace FinanceServ.Models.Responses.Transaction
         /// Внешний ключ-указатель на идентификатор валюты.
         /// </summary>
         public long CurrencyId { get; set; }
+
+        /// <summary>
+        /// Буквенный код валюты.
+        /// </summary>
+        public string CurrencyAlphabeticCode { get; set; }
+
+        /// <summary>
+        /// Название акции.
+        /// </summary>
+        public string StockTicker { get; set; }
     }
 }

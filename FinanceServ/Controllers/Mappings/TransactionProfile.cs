@@ -17,7 +17,9 @@ namespace FinanceServ.Controllers.Mappings
         {
             CreateMap<CreateTransactionRequest, TransactionDto>();
             CreateMap<UpdateTransactionRequest, TransactionDto>();
-            CreateMap<TransactionDto, TransactionResponse>();
+            CreateMap<TransactionDto, TransactionResponse>()
+                .ForMember(x => x.StockTicker, y => y.MapFrom(src => src.Stock.Ticker))
+                .ForMember(x => x.CurrencyAlphabeticCode, y => y.MapFrom(src => src.Currency.AlphabeticCode));
             CreateMap<TransactionDto, TransactionSideResponse>();
         }
     }
