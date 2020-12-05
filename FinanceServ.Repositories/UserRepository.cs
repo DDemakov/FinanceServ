@@ -14,7 +14,7 @@ namespace FinanceServ.Repositories
     public class UserRepository : BaseRepositoryExtended<UserDto, User>, IUserRepository
     {
         /// <summary>
-        /// Инициализирует экземпляр <see cref="StockRepository"/>.
+        /// Инициализирует экземпляр <see cref="UserRepository"/>.
         /// </summary>
         /// <param name="context">Контекст данных.</param>
         /// <param name="mapper">Маппер.</param>

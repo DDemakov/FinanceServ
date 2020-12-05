@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using FinanceServ.Models.DTO;
@@ -13,45 +14,80 @@ namespace FinanceServ.Services.Services
     /// </summary>
     public class PortfolioService : IPortfolioService
     {
-        private readonly IPortfolioRepository _repository;
+        private readonly IUnitOfWork _unitOfWork;
 
         /// <summary>
         /// Инициализирует экземпляр <see cref="PortfolioService"/>
         /// </summary>
-        /// <param name="repository">Репозиторий.</param>
-        public PortfolioService(IPortfolioRepository repository)
+        /// <param name="unitOfWork">Unit Of Work.</param>
+        public PortfolioService(IUnitOfWork unitOfWork)
         {
-            _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         /// <inheritdoc cref="ICreatable{TDto}.CreateAsync(TDto)"/>
         public async Task<PortfolioDto> CreateAsync(PortfolioDto dto)
         {
-            return await _repository.CreateAsync(dto);
+            using var scope = await _unitOfWork.PortfolioRepository.Context.Database.BeginTransactionAsync();
+            try
+            {
+                var portfolio = await _unitOfWork.PortfolioRepository.CreateAsync(dto);
+                scope.Commit();
+                return portfolio;
+            }
+
+            catch (Exception e)
+            {
+                scope.Rollback();
+                throw e;
+            }
         }
 
         /// <inheritdoc cref="IGettable{TDto}.GetAsync(CancellationToken)"/>
         public async Task<IEnumerable<PortfolioDto>> GetAsync(CancellationToken token = default)
         {
-            return await _repository.GetAsync(token);
+            return await _unitOfWork.PortfolioRepository.GetAsync(token);
         }
 
         /// <inheritdoc cref="IGettableById{TDto}.GetAsync(long, CancellationToken)"/>
         public async Task<PortfolioDto> GetAsync(long id, CancellationToken token = default)
         {
-            return await _repository.GetAsync(id);
+            return await _unitOfWork.PortfolioRepository.GetAsync(id);
         }
 
         /// <inheritdoc cref="IUpdatable{TDto}.UpdateAsync(TDto)"/>
         public async Task<PortfolioDto> UpdateAsync(PortfolioDto dto)
         {
-            return await _repository.UpdateAsync(dto);
+            using var scope = await _unitOfWork.PortfolioRepository.Context.Database.BeginTransactionAsync();
+            try
+            {
+                var portfolio = await _unitOfWork.PortfolioRepository.UpdateAsync(dto);
+                scope.Commit();
+                return portfolio;
+            }
+
+            catch (Exception e)
+            {
+                scope.Rollback();
+                throw e;
+            }
         }
 
         /// <inheritdoc cref="IDeletable.DeleteAsync(long[])"/>
         public async Task DeleteAsync(long[] ids)
         {
-            await _repository.DeleteAsync(ids);
+            using var scope = await _unitOfWork.PortfolioRepository.Context.Database.BeginTransactionAsync();
+            try
+            {
+                await _unitOfWork.PortfolioRepository.DeleteAsync(ids);
+                scope.Commit();
+            }
+
+            catch (Exception e)
+            {
+                scope.Rollback();
+                throw e;
+            }
         }
     }
 }

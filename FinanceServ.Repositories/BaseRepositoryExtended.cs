@@ -22,7 +22,7 @@ namespace FinanceServ.Repositories
         where TEntity : BaseEntity
     {
         private readonly IMapper _mapper;
-        protected readonly FinanceServContext Context;
+        public FinanceServContext Context { get; }
         protected DbSet<TEntity> DbSet => Context.Set<TEntity>();
 
         /// <summary>

@@ -27,7 +27,6 @@ namespace FinanceServ.Repositories
         {
             return dbSet.Include(e => e.Transactions).ThenInclude(e => e.Currency)
                         .Include(e => e.Transactions).ThenInclude(e => e.Stock);
-
         }
     }
 }

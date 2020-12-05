@@ -1,4 +1,6 @@
-﻿namespace FinanceServ.Repositories.Interfaces.CRUD
+﻿using FinanceServ.DAL.Contexts;
+
+namespace FinanceServ.Repositories.Interfaces.CRUD
 {
     /// <summary>
     /// Интерфейс репозиторя с базовыми CRUD-операциями.
@@ -12,5 +14,6 @@
         IUpdatable<TDto, TEntity>,
         IDeletable
     {
+        FinanceServContext Context { get; }
     }
 }

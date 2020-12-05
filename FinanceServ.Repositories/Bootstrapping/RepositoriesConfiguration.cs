@@ -22,6 +22,7 @@ namespace FinanceServ.Repositories.Bootstrapping
             services.AddTransient<IStockRepository, StockRepository>();
             services.AddTransient<ITransactionRepository, TransactionRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
     }
 }
