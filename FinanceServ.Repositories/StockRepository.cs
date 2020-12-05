@@ -22,6 +22,7 @@ namespace FinanceServ.Repositories
         {
         }
 
+        /// <inheritdoc/>
         protected override IQueryable<Stock> DefaultIncludeProperties(DbSet<Stock> dbSet)
         {
             return dbSet.Include(e => e.Transactions);

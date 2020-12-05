@@ -22,10 +22,10 @@ namespace FinanceServ.Repositories
         {
         }
 
+        /// <inheritdoc/>
         protected override IQueryable<User> DefaultIncludeProperties(DbSet<User> dbSet)
         {
-            return dbSet.Include(e => e.Portfolios)
-                        .Include(e => e.Transactions);
+            return dbSet.Include(e => e.Portfolios);
         }
     }
 }

@@ -43,7 +43,6 @@ namespace FinanceServ.DAL.Contexts
         /// <param name="options">Опции.</param>
         public FinanceServContext(DbContextOptions<FinanceServContext> options) : base(options)
         {
-            Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

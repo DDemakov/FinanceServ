@@ -22,8 +22,8 @@ namespace FinanceServ.Repositories
         where TEntity : BaseEntity
     {
         private readonly IMapper _mapper;
-        protected readonly FinanceServContext _context;
-        protected DbSet<TEntity> DbSet => _context.Set<TEntity>();
+        protected readonly FinanceServContext Context;
+        protected DbSet<TEntity> DbSet => Context.Set<TEntity>();
 
         /// <summary>
         /// Инициализирует экземпляр <see cref="BaseRepository{TDto, TEntity}"/>.
@@ -32,7 +32,7 @@ namespace FinanceServ.Repositories
         /// <param name="mapper">Маппер.</param>
         protected BaseRepositoryExtended(FinanceServContext context, IMapper mapper)
         {
-            _context = context;
+            Context = context;
             _mapper = mapper;
         }
 
@@ -41,7 +41,7 @@ namespace FinanceServ.Repositories
         {
             var entity = _mapper.Map<TEntity>(dto);
             await DbSet.AddAsync(entity);
-            await _context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
 
             return await GetAsync(entity.Id);
         }
@@ -72,8 +72,8 @@ namespace FinanceServ.Repositories
         public async Task<TDto> UpdateAsync(TDto dto, CancellationToken token = default)
         {
             var entity = _mapper.Map<TEntity>(dto);
-            _context.Update(entity);
-            await _context.SaveChangesAsync(token);
+            Context.Update(entity);
+            await Context.SaveChangesAsync(token);
 
             var newEntity = await GetAsync(entity.Id);
 
@@ -87,8 +87,8 @@ namespace FinanceServ.Repositories
                                 .Where(x => ids.Contains(x.Id))
                                 .ToListAsync();
 
-            _context.RemoveRange(entities);
-            await _context.SaveChangesAsync();
+            Context.RemoveRange(entities);
+            await Context.SaveChangesAsync();
         }
 
         /// <summary>
