@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using FinanceServ.DAL.Entities;
 
 namespace FinanceServ.Models.DTO

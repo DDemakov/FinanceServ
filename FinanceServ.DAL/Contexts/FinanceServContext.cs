@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using FinanceServ.DAL.Entities;
 using FinanceServ.DAL.Contexts.EntitiesConfiguration;
 
@@ -53,6 +50,5 @@ namespace FinanceServ.DAL.Contexts
             builder.ApplyConfiguration(new TransactionConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
         }
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
-using FinanceServ.DAL.Entities;
 using System.Collections.Generic;
+using FinanceServ.DAL.Entities;
 
 namespace FinanceServ.Models.DTO
 {
