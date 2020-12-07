@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using FinanceServ.DAL.Entities;
 
 namespace FinanceServ.Models.DTO
@@ -24,6 +22,11 @@ namespace FinanceServ.Models.DTO
         /// Цифровой код валюты.
         /// </summary>
         public string NumericCode { get; set; }
+
+        /// <summary>
+        /// Краткое описание валюты.
+        /// </summary>
+        public string Description { get; set; }
 
         /// <summary>
         /// Возможность использования.

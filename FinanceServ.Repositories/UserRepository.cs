@@ -14,7 +14,7 @@ namespace FinanceServ.Repositories
     public class UserRepository : BaseRepositoryExtended<UserDto, User>, IUserRepository
     {
         /// <summary>
-        /// Инициализирует экземпляр <see cref="StockRepository"/>.
+        /// Инициализирует экземпляр <see cref="UserRepository"/>.
         /// </summary>
         /// <param name="context">Контекст данных.</param>
         /// <param name="mapper">Маппер.</param>
@@ -22,10 +22,10 @@ namespace FinanceServ.Repositories
         {
         }
 
+        /// <inheritdoc/>
         protected override IQueryable<User> DefaultIncludeProperties(DbSet<User> dbSet)
         {
-            return dbSet.Include(e => e.Portfolios)
-                        .Include(e => e.Transactions);
+            return dbSet.Include(e => e.Portfolios);
         }
     }
 }

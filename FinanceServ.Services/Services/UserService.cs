@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using FinanceServ.Models.DTO;
@@ -9,49 +10,84 @@ using FinanceServ.Services.Interfaces.CRUD;
 namespace FinanceServ.Services.Services
 {
     /// <summary>
-    /// Сервис для работы с данными по акциям.
+    /// Сервис для работы с данными по пользователям.
     /// </summary>
     public class UserService : IUserService
     {
-        private readonly IUserRepository _repository;
+        private readonly IUnitOfWork _unitOfWork;
 
         /// <summary>
         /// Инициализирует экземпляр <see cref="UserService"/>
         /// </summary>
-        /// <param name="repository">Репозиторий.</param>
-        public UserService(IUserRepository repository)
+        /// <param name="unitOfWork">Unit of Work.</param>
+        public UserService(IUnitOfWork unitOfWork)
         {
-            _repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
         /// <inheritdoc cref="ICreatable{TDto}.CreateAsync(TDto)"/>
         public async Task<UserDto> CreateAsync(UserDto dto)
         {
-            return await _repository.CreateAsync(dto);
+            using var scope = await _unitOfWork.UserRepository.Context.Database.BeginTransactionAsync();
+            try
+            {
+                var user = await _unitOfWork.UserRepository.CreateAsync(dto);
+                scope.Commit();
+                return user;
+            }
+
+            catch(Exception e)
+            {
+                scope.Rollback();
+                throw e;
+            }
         }
 
         /// <inheritdoc cref="IGettable{TDto}.GetAsync(CancellationToken)"/>
         public async Task<IEnumerable<UserDto>> GetAsync(CancellationToken token = default)
         {
-            return await _repository.GetAsync();
+            return await _unitOfWork.UserRepository.GetAsync(token);
         }
 
         /// <inheritdoc cref="IGettableById{TDto}.GetAsync(long, CancellationToken)"/>
         public async Task<UserDto> GetAsync(long id, CancellationToken token = default)
         {
-            return await _repository.GetAsync(id);
+            return await _unitOfWork.UserRepository.GetAsync(id);
         }
 
         /// <inheritdoc cref="IUpdatable{TDto}.UpdateAsync(TDto)"/>
         public async Task<UserDto> UpdateAsync(UserDto dto)
         {
-            return await _repository.UpdateAsync(dto);
+            using var scope = await _unitOfWork.UserRepository.Context.Database.BeginTransactionAsync();
+            try
+            {
+                var user = await _unitOfWork.UserRepository.UpdateAsync(dto);
+                scope.Commit();
+                return user;
+            }
+
+            catch (Exception e)
+            {
+                scope.Rollback();
+                throw e;
+            }
         }
 
         /// <inheritdoc cref="IDeletable.DeleteAsync(long[])"/>
         public async Task DeleteAsync(long[] ids)
         {
-            await _repository.DeleteAsync(ids);
+            using var scope = await _unitOfWork.UserRepository.Context.Database.BeginTransactionAsync();
+            try
+            {
+                await _unitOfWork.UserRepository.DeleteAsync(ids);
+                scope.Commit();
+            }
+
+            catch (Exception e)
+            {
+                scope.Rollback();
+                throw e;
+            }
         }
     }
 }

@@ -27,6 +27,7 @@ ____
 
 ## ER-диаграмма:
 
-![изображение](https://github.com/DDemakov/FinanceServ/blob/develop/FinanceServ/Static/DbStructure.png)
-
+![изображение](https://github.com/DDemakov/FinanceServ/blob/develop/FinanceServ/Static/ER-01.png)  
+![изображение](https://github.com/DDemakov/FinanceServ/blob/develop/FinanceServ/Static/ER-02.png)  
+![изображение](https://github.com/DDemakov/FinanceServ/blob/develop/FinanceServ/Static/ER-03.png)  
 ____

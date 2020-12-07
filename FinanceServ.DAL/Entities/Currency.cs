@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FinanceServ.DAL.Entities
 {
@@ -20,14 +17,22 @@ namespace FinanceServ.DAL.Entities
         /// <summary>
         /// Буквенный код валюты.
         /// </summary>
+        [Required]
         [StringLength(3)]
         public string AlphabeticCode { get; set; }
 
         /// <summary>
         /// Цифровой код валюты.
         /// </summary>
+        [Required]
         [StringLength(3)]
         public string NumericCode { get; set; }
+
+        /// <summary>
+        /// Краткое описание валюты.
+        /// </summary>
+        [StringLength(200)]
+        public string Description { get; set; }
 
         /// <summary>
         /// Возможность использования.
