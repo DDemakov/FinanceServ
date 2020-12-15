@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure;
 using FinanceServ.DAL.Contexts;
+using Npgsql;
+
 
 namespace FinanceServ.DAL.Bootstrapping
 {
@@ -12,10 +15,18 @@ namespace FinanceServ.DAL.Bootstrapping
     {
         public static void ConfigureDb(this IServiceCollection services, IConfiguration configuration)
         {
+            var stringBuilder = new NpgsqlConnectionStringBuilder(
+                configuration.GetConnectionString(nameof(FinanceServContext)));
+            stringBuilder.Password = configuration["DbPassword"];
+            stringBuilder.Database = configuration["DbName"];
+
             services.AddDbContext<FinanceServContext>(
                 options => options.UseNpgsql(
-                    configuration.GetConnectionString(nameof(FinanceServContext)),
-                    builder => builder.MigrationsAssembly(typeof(FinanceServContext).Assembly.FullName))
+                    stringBuilder.ConnectionString,
+                    builder =>
+                    {
+                        builder.MigrationsAssembly(typeof(FinanceServContext).Assembly.FullName);
+                    })
                 );
         }
     }
