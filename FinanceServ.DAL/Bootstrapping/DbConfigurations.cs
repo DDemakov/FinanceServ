@@ -1,10 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Infrastructure;
-using FinanceServ.DAL.Contexts;
 using Npgsql;
-
+using FinanceServ.DAL.Contexts;
 
 namespace FinanceServ.DAL.Bootstrapping
 {
