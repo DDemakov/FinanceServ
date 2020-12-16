@@ -13,10 +13,12 @@ namespace FinanceServ.DAL.Bootstrapping
     {
         public static void ConfigureDb(this IServiceCollection services, IConfiguration configuration)
         {
-            var stringBuilder = new NpgsqlConnectionStringBuilder(
-                configuration.GetConnectionString(nameof(FinanceServContext)));
-            stringBuilder.Password = configuration["DbPassword"];
-            stringBuilder.Database = configuration["DbName"];
+            var connectionString = configuration["ConnectionString"];
+            var password = configuration["DbPassword"];
+            var stringBuilder = new NpgsqlConnectionStringBuilder(connectionString)
+            {
+                Password = password
+            };
 
             services.AddDbContext<FinanceServContext>(
                 options => options.UseNpgsql(
