@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
 using FinanceServ.DAL.Contexts;
 
 namespace FinanceServ.DAL.Bootstrapping
@@ -12,10 +13,20 @@ namespace FinanceServ.DAL.Bootstrapping
     {
         public static void ConfigureDb(this IServiceCollection services, IConfiguration configuration)
         {
+            var connectionString = configuration["ConnectionString"];
+            var password = configuration["DbPassword"];
+            var stringBuilder = new NpgsqlConnectionStringBuilder(connectionString)
+            {
+                Password = password
+            };
+
             services.AddDbContext<FinanceServContext>(
                 options => options.UseNpgsql(
-                    configuration.GetConnectionString(nameof(FinanceServContext)),
-                    builder => builder.MigrationsAssembly(typeof(FinanceServContext).Assembly.FullName))
+                    stringBuilder.ConnectionString,
+                    builder =>
+                    {
+                        builder.MigrationsAssembly(typeof(FinanceServContext).Assembly.FullName);
+                    })
                 );
         }
     }
