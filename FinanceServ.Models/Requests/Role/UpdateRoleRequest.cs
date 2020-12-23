@@ -1,11 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace FinanceServ.Models.Requests.Currency
+namespace FinanceServ.Models.Requests.Role
 {
-    /// <summary>
-    /// Запрос на изменение валюты.
-    /// </summary>
-    public class UpdateCurrencyRequest : CreateCurrencyRequest
+    public class UpdateRoleRequest : CreateRoleRequest
     {
         /// <summary>
         /// Идентификатор записи.
@@ -14,4 +11,3 @@ namespace FinanceServ.Models.Requests.Currency
         public long Id { get; set; }
     }
 }
-

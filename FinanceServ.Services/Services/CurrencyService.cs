@@ -46,7 +46,7 @@ namespace FinanceServ.Services.Services
         /// <inheritdoc cref="IGettable{TDto}.GetAsync(CancellationToken)"/>
         public async Task<IEnumerable<CurrencyDto>> GetAsync(CancellationToken token = default)
         {
-            return await _unitOfWork.CurrencyRepository.GetAsync(token);
+            return await _unitOfWork.CurrencyRepository.GetAsync(token: token);
         }
 
         /// <inheritdoc cref="IGettableById{TDto}.GetAsync(long, CancellationToken)"/>

@@ -3,15 +3,17 @@ using System;
 using FinanceServ.DAL.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace FinanceServ.DAL.Migrations
 {
     [DbContext(typeof(FinanceServContext))]
-    partial class FinanceServContextModelSnapshot : ModelSnapshot
+    [Migration("20201223181700_new_entities")]
+    partial class new_entities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

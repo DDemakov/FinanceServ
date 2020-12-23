@@ -59,7 +59,7 @@ namespace FinanceServ.Repositories
         }
 
         /// <inheritdoc cref="IGettable{TDto, TEntity}.GetAsync(CancellationToken)"/>
-        public async Task<IEnumerable<TDto>> GetAsync(CancellationToken token = default)
+        public async Task<IEnumerable<TDto>> GetAsync(bool isCollectionWithIncludes = false, CancellationToken token = default)
         {
             var entities = await DbSet.AsNoTracking().ToListAsync();
 

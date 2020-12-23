@@ -14,8 +14,9 @@ namespace FinanceServ.Repositories.Interfaces.CRUD
         /// <summary>
         /// Получение сущностей.
         /// </summary>
+        /// <param name="isCollectionWithIncludes">Параметр загрузки коллекции со связанными сущностями.</param>
         /// <param name="token">Экземпляр <see cref="CancellationToken"/>.</param>
         /// <returns>Коллекция DTO.</returns>
-        Task<IEnumerable<TDto>> GetAsync(CancellationToken token = default);
+        Task<IEnumerable<TDto>> GetAsync(bool isCollectionWithIncludes = false, CancellationToken token = default);
     }
 }

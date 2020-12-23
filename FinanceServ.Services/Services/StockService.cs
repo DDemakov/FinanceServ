@@ -46,7 +46,7 @@ namespace FinanceServ.Services.Services
         /// <inheritdoc cref="IGettable{TDto}.GetAsync(CancellationToken)"/>
         public async Task<IEnumerable<StockDto>> GetAsync(CancellationToken token = default)
         {
-            return await _unitOfWork.StockRepository.GetAsync(token);
+            return await _unitOfWork.StockRepository.GetAsync(token: token);
         }
 
         /// <inheritdoc cref="IGettableById{TDto}.GetAsync(long, CancellationToken)"/>

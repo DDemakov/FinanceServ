@@ -29,6 +29,13 @@ namespace FinanceServ.Common.Swagger
             })
             .AddSwaggerDocument(c =>
             {
+                c.Title = "Portfolios";
+                c.DocumentName = SwaggerDocParts.Roles;
+                c.ApiGroupNames = new[] { SwaggerDocParts.Roles };
+                c.GenerateXmlObjects = true;
+            })
+            .AddSwaggerDocument(c =>
+            {
                 c.Title = "Stocks";
                 c.DocumentName = SwaggerDocParts.Stocks;
                 c.ApiGroupNames = new[] { SwaggerDocParts.Stocks };

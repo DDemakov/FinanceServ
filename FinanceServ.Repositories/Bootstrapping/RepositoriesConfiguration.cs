@@ -18,10 +18,12 @@ namespace FinanceServ.Repositories.Bootstrapping
         public static void ConfigureRepositories (this IServiceCollection services)
         {
             services.AddTransient<ICurrencyRepository, CurrencyRepository>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
             services.AddTransient<IPortfolioRepository, PortfolioRepository>();
             services.AddTransient<IStockRepository, StockRepository>();
             services.AddTransient<ITransactionRepository, TransactionRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserRoleRepository, UserRoleRepository>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
     }

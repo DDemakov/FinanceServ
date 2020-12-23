@@ -15,8 +15,10 @@ namespace FinanceServ.DAL.Contexts.EntitiesConfiguration
         /// <param name="builder">Билдер.</param>
         public void Configure(EntityTypeBuilder<Currency> builder)
         {
-            builder.HasAlternateKey(c => c.AlphabeticCode);
-            builder.HasAlternateKey(c => c.NumericCode);
+            builder.HasIndex(c => c.AlphabeticCode)
+                .IsUnique();
+            builder.HasIndex(c => c.NumericCode)
+                .IsUnique();
         }
     }
 }

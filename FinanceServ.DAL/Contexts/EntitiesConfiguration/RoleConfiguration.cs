@@ -5,17 +5,17 @@ using FinanceServ.DAL.Entities;
 namespace FinanceServ.DAL.Contexts.EntitiesConfiguration
 {
     /// <summary>
-    /// Класс конфигурации сущности "Акция".
+    /// Класс конфигурации сущности "Роль".
     /// </summary>
-    public class StockConfiguration : IEntityTypeConfiguration<Stock>
+    public class RoleConfiguration : IEntityTypeConfiguration<Role>
     {
         /// <summary>
-        /// Конфигурирование сущности "Акция".
+        /// Конфигурирование сущности "Роль".
         /// </summary>
         /// <param name="builder">Билдер.</param>
-        public void Configure(EntityTypeBuilder<Stock> builder)
+        public void Configure(EntityTypeBuilder<Role> builder)
         {
-            builder.HasIndex(s => s.Ticker)
+            builder.HasIndex(s => s.Name)
                 .IsUnique();
         }
     }
