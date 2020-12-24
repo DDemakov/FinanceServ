@@ -127,7 +127,7 @@ namespace FinanceServ.Services.Services
             }
 
             var roles = await _unitOfWork.UserRoleRepository.GetAsync(true);
-            var role = roles.SingleOrDefault(x => x.User.Email == email).Role?.Name;
+            var role = roles.SingleOrDefault(x => x.User.Email == email)?.Role?.Name;
 
             if (string.IsNullOrEmpty(role))
                 throw new ArgumentNullException("Не могу найти роль, сопоставленную пользователю");
