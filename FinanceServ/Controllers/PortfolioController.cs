@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using FinanceServ.Common.Swagger;
@@ -18,9 +19,9 @@ namespace FinanceServ.Controllers
     /// <summary>
     /// Контроллер для работы с данными о финансовых портфелях.
     /// </summary>
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    [ApiExplorerSettings(GroupName = SwaggerDocParts.Portfolios)]
+    [Authorize]
     public class PortfolioController : ControllerBase
     {
         private readonly ILogger<PortfolioController> _logger;

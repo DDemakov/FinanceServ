@@ -1,24 +1,22 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 using System.Reflection;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using FinanceServ.Common.Swagger;
+using Microsoft.IdentityModel.Tokens;
 using AutoMapper;
+using FinanceServ.Common.Swagger;
 using FinanceServ.Services.Bootstrapping;
-using FinanceServ.Services.Services;
 using FinanceServ.Controllers;
 using FinanceServ.Repositories;
 using FinanceServ.Repositories.Bootstrapping;
 using FinanceServ.DAL.Bootstrapping;
+using FinanceServ.Infrastructure;
+using FinanceServ.Infrastructure.Interfaces;
 
 namespace FinanceServ
 {
@@ -50,11 +48,50 @@ namespace FinanceServ
             services.ConfigureDb(Configuration);
             services.ConfigureRepositories();
             services.AddControllers();
+
+            var jwtTokenConfig = Configuration.GetSection("jwtTokenConfig").Get<JwtTokenConfig>();
+            services.AddSingleton(jwtTokenConfig);
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = true;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = jwtTokenConfig.Issuer,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(jwtTokenConfig.Secret)),
+                    ValidAudience = jwtTokenConfig.Audience,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.FromMinutes(1)
+                };
+            });
+
+            services.AddSingleton<IJwtAuthManager, JwtAuthManager>();
+            services.AddHostedService<JwtRefreshTokenCache>();
             services.ConfigureServices();
             services.AddAutoMapper(
                 typeof(CurrencyRepository).GetTypeInfo().Assembly,
                 typeof(CurrencyController).GetTypeInfo().Assembly);
             services.ConfigureSwagger();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFinanceServ",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200");
+                        builder.WithMethods("GET", "POST", "PUT", "OPTIONS");
+                        builder.AllowAnyHeader();
+                        builder.SetPreflightMaxAge(TimeSpan.FromSeconds(2520));
+                    });
+            });
         }
 
         /// <summary>
@@ -71,18 +108,23 @@ namespace FinanceServ
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("./swagger/v1/swagger.json", "FinanceService with JWT Authorization V1");
+                c.DocumentTitle = "Jwt Authorization";
+                c.RoutePrefix = string.Empty;
+            });
 
+            app.UseRouting();
+            app.UseCors("AllowFinanceServ");
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
-            app.UseCors();
-            app.UseOpenApi();
-            app.UseSwaggerUi3();
         }
     }
 }
