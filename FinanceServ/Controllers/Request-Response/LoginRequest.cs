@@ -19,6 +19,8 @@ namespace FinanceServ.Controllers.Request_Response
         /// <summary>
         /// Password.
         /// </summary>
+        [Required]
+        [JsonPropertyName("password")]
         public string Password { get; set; }
     }
 }
