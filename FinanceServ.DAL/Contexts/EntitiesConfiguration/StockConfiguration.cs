@@ -15,7 +15,8 @@ namespace FinanceServ.DAL.Contexts.EntitiesConfiguration
         /// <param name="builder">Билдер.</param>
         public void Configure(EntityTypeBuilder<Stock> builder)
         {
-            builder.HasAlternateKey(s => s.Ticker);
+            builder.HasIndex(s => s.Ticker)
+                .IsUnique();
         }
     }
 }

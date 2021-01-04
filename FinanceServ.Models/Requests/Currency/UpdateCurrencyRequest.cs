@@ -14,3 +14,4 @@ namespace FinanceServ.Models.Requests.Currency
         public long Id { get; set; }
     }
 }
+

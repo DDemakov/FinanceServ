@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceServ.Models", "Finan
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceServ.Services", "FinanceServ.Services\FinanceServ.Services.csproj", "{815D1284-2FCE-4203-8B6D-F52E78F4ADA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceServ.Repositories", "FinanceServ.Repositories\FinanceServ.Repositories.csproj", "{986DE6D2-8D46-428C-AE98-25F382F5FEF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FinanceServ.Repositories", "FinanceServ.Repositories\FinanceServ.Repositories.csproj", "{986DE6D2-8D46-428C-AE98-25F382F5FEF1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FinanceServ.Infrastructure", "FinanceServ.Infrastructure\FinanceServ.Infrastructure.csproj", "{A1902D9B-A3EC-4929-A444-AEA795C42800}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{986DE6D2-8D46-428C-AE98-25F382F5FEF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{986DE6D2-8D46-428C-AE98-25F382F5FEF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{986DE6D2-8D46-428C-AE98-25F382F5FEF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1902D9B-A3EC-4929-A444-AEA795C42800}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1902D9B-A3EC-4929-A444-AEA795C42800}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1902D9B-A3EC-4929-A444-AEA795C42800}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1902D9B-A3EC-4929-A444-AEA795C42800}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

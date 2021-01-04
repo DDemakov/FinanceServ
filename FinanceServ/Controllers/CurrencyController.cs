@@ -3,24 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using FinanceServ.Common.Swagger;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using FinanceServ.Services.Interfaces;
 using FinanceServ.Models.DTO;
 using FinanceServ.Models.Requests.Currency;
 using FinanceServ.Models.Responses.Currency;
+using FinanceServ.Common.Swagger;
 
 namespace FinanceServ.Controllers
 {
     /// <summary>
     /// Контроллер для работы с данными о валютах.
     /// </summary>
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    [ApiExplorerSettings(GroupName = SwaggerDocParts.Currencies)]
+    [Authorize]
     public class CurrencyController : ControllerBase
     {
         private readonly ILogger<CurrencyController> _logger;

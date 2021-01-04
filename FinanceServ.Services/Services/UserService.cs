@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using FinanceServ.Models.DTO;
@@ -46,7 +47,7 @@ namespace FinanceServ.Services.Services
         /// <inheritdoc cref="IGettable{TDto}.GetAsync(CancellationToken)"/>
         public async Task<IEnumerable<UserDto>> GetAsync(CancellationToken token = default)
         {
-            return await _unitOfWork.UserRepository.GetAsync(token);
+            return await _unitOfWork.UserRepository.GetAsync(token : token);
         }
 
         /// <inheritdoc cref="IGettableById{TDto}.GetAsync(long, CancellationToken)"/>
@@ -88,6 +89,50 @@ namespace FinanceServ.Services.Services
                 scope.Rollback();
                 throw e;
             }
+        }
+
+
+        /// <inheritdoc cref="IUserService.IsAnExistingUserAsync(string)"/>
+        public async Task<bool> IsAnExistingUserAsync(string email)
+        {
+            var users = await _unitOfWork.UserRepository.GetAsync();
+            return users.Any(x => x.Email == email);
+        }
+
+        /// <inheritdoc cref="IUserService.IsValidUserCredentials(string, string)"/>
+        public async Task<bool> IsValidUserCredentialsAsync(string email, string password)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+            {
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                return false;
+            }
+
+            var users = await _unitOfWork.UserRepository.GetAsync();
+            return users.Any(x => x.Email == email && x.Password == password);
+        }
+
+        /// <inheritdoc cref="IUserService.GetUserRole(string)"/>
+        public async Task<string> GetUserRoleAsync(string email)
+        {
+            var isUserExist = await IsAnExistingUserAsync(email);
+            
+            if (!isUserExist)
+            {
+                return string.Empty;
+            }
+
+            var roles = await _unitOfWork.UserRoleRepository.GetAsync(true);
+            var role = roles.SingleOrDefault(x => x.User.Email == email)?.Role?.Name;
+
+            if (string.IsNullOrEmpty(role))
+                throw new ArgumentNullException("Не могу найти роль, сопоставленную пользователю");
+
+            return role;
         }
     }
 }

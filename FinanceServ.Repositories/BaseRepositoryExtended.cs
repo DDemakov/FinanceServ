@@ -59,13 +59,26 @@ namespace FinanceServ.Repositories
         }
 
         /// <inheritdoc cref="IGettable{TDto, TEntity}.GetAsync(CancellationToken)"/>
-        public async Task<IEnumerable<TDto>> GetAsync(CancellationToken token = default)
+        public virtual async Task<IEnumerable<TDto>> GetAsync(bool isCollectionWithIncludes = false,
+            CancellationToken token = default)
         {
-            var entities = await DbSet.AsNoTracking().ToListAsync();
+            if (!isCollectionWithIncludes)
+            {
+                var entities = await DbSet.AsNoTracking().ToListAsync();
 
-            var dtos = _mapper.Map<IEnumerable<TDto>>(entities);
+                var dtos = _mapper.Map<IEnumerable<TDto>>(entities);
 
-            return dtos;
+                return dtos;
+            }
+            else
+            {
+                var entitiesRelated = await DefaultIncludeProperties(DbSet)
+                                           .AsNoTracking()
+                                           .ToListAsync();
+                var dtos = _mapper.Map<IEnumerable<TDto>>(entitiesRelated);
+                
+                return dtos;
+            }
         }
 
         /// <inheritdoc cref="IUpdatable{TDto, TEntity}.UpdateAsync(TDto, CancellationToken)(TDto)"/>

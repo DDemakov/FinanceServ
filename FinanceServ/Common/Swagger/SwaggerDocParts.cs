@@ -6,6 +6,11 @@
     public sealed class SwaggerDocParts
     {
         /// <summary>
+        /// Константа для swagger-документа "Аккаунт".
+        /// </summary>
+        public const string Account = nameof(Account);
+
+        /// <summary>
         /// Константа для swagger-документа "Валюты".
         /// </summary>
         public const string Currencies = nameof(Currencies);
@@ -16,7 +21,12 @@
         public const string Portfolios = nameof(Portfolios);
 
         /// <summary>
-        /// Константа для swagger-документа "Акция".
+        /// Константа для swagger-документа "Роли".
+        /// </summary>
+        public const string Roles = nameof(Roles);
+
+        /// <summary>
+        /// Константа для swagger-документа "Акции".
         /// </summary>
         public const string Stocks = nameof(Stocks);
 

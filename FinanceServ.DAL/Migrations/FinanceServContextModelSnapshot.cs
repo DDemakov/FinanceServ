@@ -17,7 +17,7 @@ namespace FinanceServ.DAL.Migrations
             modelBuilder
                 .UseIdentityByDefaultColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "5.0.1");
 
             modelBuilder.Entity("FinanceServ.DAL.Entities.Currency", b =>
                 {
@@ -49,9 +49,11 @@ namespace FinanceServ.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("AlphabeticCode");
+                    b.HasIndex("AlphabeticCode")
+                        .IsUnique();
 
-                    b.HasAlternateKey("NumericCode");
+                    b.HasIndex("NumericCode")
+                        .IsUnique();
 
                     b.ToTable("Currencies");
                 });
@@ -78,6 +80,24 @@ namespace FinanceServ.DAL.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Portfolios");
+                });
+
+            modelBuilder.Entity("FinanceServ.DAL.Entities.Role", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("FinanceServ.DAL.Entities.Stock", b =>
@@ -116,7 +136,8 @@ namespace FinanceServ.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("Ticker");
+                    b.HasIndex("Ticker")
+                        .IsUnique();
 
                     b.ToTable("Stocks");
                 });
@@ -191,9 +212,32 @@ namespace FinanceServ.DAL.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("Email");
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("FinanceServ.DAL.Entities.UserRole", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .UseIdentityByDefaultColumn();
+
+                    b.Property<long?>("RoleId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRoles");
                 });
 
             modelBuilder.Entity("FinanceServ.DAL.Entities.Portfolio", b =>
@@ -238,6 +282,21 @@ namespace FinanceServ.DAL.Migrations
                     b.Navigation("Portfolio");
 
                     b.Navigation("Stock");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("FinanceServ.DAL.Entities.UserRole", b =>
+                {
+                    b.HasOne("FinanceServ.DAL.Entities.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId");
+
+                    b.HasOne("FinanceServ.DAL.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Role");
 
                     b.Navigation("User");
                 });

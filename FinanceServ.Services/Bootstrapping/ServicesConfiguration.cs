@@ -20,6 +20,8 @@ namespace FinanceServ.Services.Bootstrapping
             services.AddTransient<IStockService, StockService>();
             services.AddTransient<ITransactionService, TransactionService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IRoleService, RoleService>();
+            services.AddTransient<IUserRoleService, UserRoleService>();
         }
     }
 }

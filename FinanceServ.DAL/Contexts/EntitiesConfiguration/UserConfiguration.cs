@@ -15,7 +15,8 @@ namespace FinanceServ.DAL.Contexts.EntitiesConfiguration
         /// <param name="builder">Билдер.</param>
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.HasAlternateKey(u => u.Email);
+            builder.HasIndex(u => u.Email)
+                .IsUnique();
         }
     }
 }

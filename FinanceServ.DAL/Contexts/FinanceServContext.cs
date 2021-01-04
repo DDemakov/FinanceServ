@@ -35,6 +35,16 @@ namespace FinanceServ.DAL.Contexts
         public DbSet<Transaction> Transactions { get; set; }
 
         /// <summary>
+        /// Роли.
+        /// </summary>
+        public DbSet<Role> Roles { get; set; }
+
+        /// <summary>
+        /// Связевая сущность Пользователь-Роль.
+        /// </summary>
+        public DbSet<UserRole> UserRoles { get; set; }
+
+        /// <summary>
         /// Инициализирует экземпляр <see cref="FinanceServContext"/>.
         /// </summary>
         /// <param name="options">Опции.</param>
@@ -49,6 +59,7 @@ namespace FinanceServ.DAL.Contexts
             builder.ApplyConfiguration(new StockConfiguration());
             builder.ApplyConfiguration(new TransactionConfiguration());
             builder.ApplyConfiguration(new UserConfiguration());
+            builder.ApplyConfiguration(new RoleConfiguration());
         }
     }
 }

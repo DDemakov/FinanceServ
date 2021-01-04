@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using FinanceServ.Common.Swagger;
@@ -18,9 +19,8 @@ namespace FinanceServ.Controllers
     /// <summary>
     /// Контроллер для работы с данными о пользователях.
     /// </summary>
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
-    [ApiExplorerSettings(GroupName = SwaggerDocParts.Users)]
     public class UserController : ControllerBase
     {
         private readonly ILogger<UserController> _logger;
@@ -46,6 +46,7 @@ namespace FinanceServ.Controllers
         /// <returns>Коллекция сущностей "Пользователь".</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<UserResponse>))]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation("Users/GetAsync was requested.");
@@ -59,6 +60,7 @@ namespace FinanceServ.Controllers
         /// <returns>Сущность "Пользователь".</returns>
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserResponse))]
+        [AllowAnonymous]
         public async Task<IActionResult> GetByIdAsync(long id, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Users/GetByIdAsync was requested.");
@@ -74,6 +76,7 @@ namespace FinanceServ.Controllers
         /// <returns>Сущность "Пользователь".</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserResponse))]
+        [AllowAnonymous]
         public async Task<IActionResult> PostAsync(CreateUserRequest request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Users/PostAsync was requested.");
@@ -89,6 +92,7 @@ namespace FinanceServ.Controllers
         /// <returns>Сущность "Пользователь".</returns>
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UserResponse))]
+        [Authorize]
         public async Task<IActionResult> PutAsync(UpdateUserRequest request, CancellationToken cancellationToken)
         {
             _logger.LogInformation("Users/PutAsync was requested.");
@@ -104,6 +108,7 @@ namespace FinanceServ.Controllers
         /// <returns>Пустой ответ в виде статусного кода 204.</returns>
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [Authorize]
         public async Task<IActionResult> DeleteAsync(CancellationToken cancellationToken, params long[] ids)
         {
             _logger.LogInformation("Users/DeleteAsync was requested.");
