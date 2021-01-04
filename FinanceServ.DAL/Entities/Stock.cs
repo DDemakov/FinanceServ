@@ -20,7 +20,6 @@ namespace FinanceServ.DAL.Entities
         [Required]
         public string Ticker { get; set; }
        
-
         /// <summary>
         /// Краткое описание компании.
         /// </summary>
